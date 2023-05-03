@@ -12,25 +12,22 @@ public enum Family implements IMainInformation {
 
 
     private final int code;
-    private final String responseText;
+    private final String reasonText;
 
-    Family(int code, String responseText) {
+    Family(int code, String reasonText) {
         this.code = code;
-        this.responseText = responseText;
+        this.reasonText = reasonText;
     }
 
     public static Family fromString(String text) {
         for (Family b : Family.values()) {
-            if (b.responseText.equalsIgnoreCase(text)) {
+            if (b.reasonText.equalsIgnoreCase(text)) {
                 return b;
             }
         }
         return null;
     }
 
-    public String getResponseText() {
-        return responseText;
-    }
 
     @Override
     public int getCode() {

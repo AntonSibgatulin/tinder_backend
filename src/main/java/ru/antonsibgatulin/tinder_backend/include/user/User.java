@@ -22,9 +22,18 @@ public class User {
     private String password;
 
     private Long timeBirth;
-    private String gender;
+
+
+    //private String gender;
+    //private String genderToShow;
+
+
+    private EUser gender;
+    private EUser genderToShow;
+
+
     private boolean showMe;
-    private String genderToShow;
+
 
     private String email;
 
