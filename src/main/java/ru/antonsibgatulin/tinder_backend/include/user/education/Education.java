@@ -6,12 +6,12 @@ import ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac.Symbols;
 public enum Education implements IMainInformation {
 
     BAKALAVR("Бакалавриат",0),
-    KOLLEGE("Колледж",0),
-    AVE_SCH("Средняя школа",0),
-    DOCKTOR("Доктор наук",0),
-    ASPIRANT("Аспирантура",0),
-    MAGISTRAT("Магистратура",0),
-    TECH("Техникум",0);
+    KOLLEGE("Колледж",1),
+    AVE_SCH("Средняя школа",2),
+    DOCKTOR("Доктор наук",3),
+    ASPIRANT("Аспирантура",4),
+    MAGISTRAT("Магистратура",5),
+    TECH("Техникум",6);
 
 
     private final String reasonText;
