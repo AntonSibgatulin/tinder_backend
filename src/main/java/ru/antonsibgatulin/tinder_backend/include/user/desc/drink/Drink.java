@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.drink;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.drink;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.styles.Style;
 
 public enum Drink implements IMainInformation {
     IT_IS_NOT_FOR_ME(0,"Это не для меня"),

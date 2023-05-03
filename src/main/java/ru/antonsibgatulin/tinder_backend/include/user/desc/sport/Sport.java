@@ -1,12 +1,13 @@
-package ru.antonsibgatulin.tinder_backend.include.user.sleep;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.sport;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.plane_on_family.Family;
 
-public enum Sleep implements IMainInformation {
-    LARK(0,"Жаворонок"),
-    OWL(0,"Сова"),
-    AVERAGE(0,"Среднее"),
+public enum Sport implements IMainInformation {
+    EVERY_DAY(0,"Каждый день"),
+    OFTEN  (1,"Часто"),
+    SOMETIMES (2,"Иногда"),
+    NEVER(3,"Никогда"),
+
     ;
 
 
@@ -14,20 +15,21 @@ public enum Sleep implements IMainInformation {
     private final String reasonText;
 
 
-    Sleep(int code, String reasonText) {
+    Sport(int code, String reasonText) {
         this.code = code;
         this.reasonText = reasonText;
     }
 
 
-    public static Sleep fromString(String text) {
-        for (Sleep b : Sleep.values()) {
+    public static Sport fromString(String text) {
+        for (Sport b : Sport.values()) {
             if (b.reasonText.equalsIgnoreCase(text)) {
                 return b;
             }
         }
         return null;
     }
+
 
     @Override
     public int getCode() {

@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.education;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.education;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac.Symbols;
 
 public enum Education implements IMainInformation {
 

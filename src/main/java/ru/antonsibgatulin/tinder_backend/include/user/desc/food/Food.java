@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.food;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.food;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.sport.Sport;
 
 public enum Food implements IMainInformation {
     VEGANISM(0,"Веганство"),

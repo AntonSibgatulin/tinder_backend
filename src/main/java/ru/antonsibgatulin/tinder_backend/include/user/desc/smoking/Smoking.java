@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.smoking;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.smoking;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.styles.Style;
 
 public enum Smoking implements IMainInformation {
     SMOKING_FOR_CAMPANY(0,"Курю за компанию"),

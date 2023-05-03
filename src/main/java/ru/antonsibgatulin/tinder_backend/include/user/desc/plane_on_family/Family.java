@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.plane_on_family;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.plane_on_family;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.education.Education;
 
 public enum Family implements IMainInformation {
     I_WANT_KID(0,"Я хочу детей"),

@@ -2,17 +2,17 @@ package ru.antonsibgatulin.tinder_backend.include.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import ru.antonsibgatulin.tinder_backend.include.user.drink.Drink;
-import ru.antonsibgatulin.tinder_backend.include.user.education.Education;
-import ru.antonsibgatulin.tinder_backend.include.user.food.Food;
-import ru.antonsibgatulin.tinder_backend.include.user.pets.Pet;
-import ru.antonsibgatulin.tinder_backend.include.user.plane_on_family.Family;
-import ru.antonsibgatulin.tinder_backend.include.user.sleep.Sleep;
-import ru.antonsibgatulin.tinder_backend.include.user.smoking.Smoking;
-import ru.antonsibgatulin.tinder_backend.include.user.socialnetwork.SocialNetwork;
-import ru.antonsibgatulin.tinder_backend.include.user.sport.Sport;
-import ru.antonsibgatulin.tinder_backend.include.user.styles.Style;
-import ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac.Symbols;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.drink.Drink;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.education.Education;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.food.Food;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.pets.Pet;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.plane_on_family.Family;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.sleep.Sleep;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.smoking.Smoking;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.socialnetwork.SocialNetwork;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.sport.Sport;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.styles.Style;
+import ru.antonsibgatulin.tinder_backend.include.user.desc.symbol_zodiac.Symbols;
 
 @Data
 @Entity

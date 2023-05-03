@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.styles;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.styles;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac.Symbols;
 
 public enum Style implements IMainInformation {
 

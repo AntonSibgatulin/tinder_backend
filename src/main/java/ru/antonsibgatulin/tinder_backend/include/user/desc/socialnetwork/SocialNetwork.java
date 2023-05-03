@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.socialnetwork;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.socialnetwork;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.sport.Sport;
 
 public enum SocialNetwork implements IMainInformation {
 

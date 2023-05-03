@@ -1,4 +1,4 @@
-package ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.symbol_zodiac;
 
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;

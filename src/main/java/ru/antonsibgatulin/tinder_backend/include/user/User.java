@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import ru.antonsibgatulin.tinder_backend.include.interests.Interest;
 import ru.antonsibgatulin.tinder_backend.include.target.Target;
-import ru.antonsibgatulin.tinder_backend.include.user.symbol_zodiac.Symbols;
 
 import java.util.List;
 
@@ -57,9 +56,11 @@ public class User {
 
 
     public void predict(){
-        setPassword(null);
-        setEmail(null);
+        password = null;
+        email = null;
     }
+
+
 
 
 }

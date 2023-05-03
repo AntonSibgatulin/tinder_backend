@@ -1,7 +1,6 @@
-package ru.antonsibgatulin.tinder_backend.include.user.pets;
+package ru.antonsibgatulin.tinder_backend.include.user.desc.pets;
 
 import ru.antonsibgatulin.tinder_backend.include.user.IMainInformation;
-import ru.antonsibgatulin.tinder_backend.include.user.plane_on_family.Family;
 
 public enum Pet implements IMainInformation {
     DOG(0,"Собака"),
