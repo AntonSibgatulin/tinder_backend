@@ -1,4 +1,4 @@
-package ru.antonsibgatulin.tinder_backend.include.image;
+package ru.antonsibgatulin.tinder_backend.include.user.image;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

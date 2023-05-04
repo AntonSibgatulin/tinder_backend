@@ -29,7 +29,7 @@ public class RegController {
 
 
     @PostMapping("/register")
-    private Response reg(@Valid @RequestBody EmailDTO emailDTO){
+    public Response reg(@Valid @RequestBody EmailDTO emailDTO){
         Response response = null;
 
         Email email = emailMapping.toNumberFromNumberDTO(emailDTO);
@@ -37,7 +37,7 @@ public class RegController {
 
         emailRepository.save(email);
         response = new Response("Waiting code...",200);
-
+        response.setEmail(email);
 
         return response;
     }
