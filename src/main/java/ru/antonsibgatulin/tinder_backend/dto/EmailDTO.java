@@ -13,4 +13,11 @@ public class EmailDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public EmailDTO(String email) {
+        this.email = email;
+    }
+
+    public EmailDTO() {
+    }
 }

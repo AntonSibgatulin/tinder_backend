@@ -17,11 +17,17 @@ public class Email {
     @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private Integer code;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
+    public Email() {
+        generateRandomCode();
+    }
 
     public void generateRandomCode(){
         setCode(100000+new Random().nextInt(900000-1));
@@ -57,5 +63,16 @@ public class Email {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Email{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", code=" + code +
+                ", user=" + user +
+                '}';
     }
 }
