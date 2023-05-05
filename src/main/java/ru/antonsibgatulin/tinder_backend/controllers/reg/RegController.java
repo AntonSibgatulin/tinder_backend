@@ -7,6 +7,7 @@ import ru.antonsibgatulin.tinder_backend.dto.UserDTO;
 import ru.antonsibgatulin.tinder_backend.dto.mapping.EmailMapping;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.email.repository.EmailRepository;
+import ru.antonsibgatulin.tinder_backend.include.error.Error;
 import ru.antonsibgatulin.tinder_backend.include.system.result.Response;
 import ru.antonsibgatulin.tinder_backend.include.user.repository.UserRepository;
 
@@ -34,26 +35,56 @@ public class RegController {
         email.generateRandomCode();
 
         emailRepository.save(email);
-        response = new Response("Waiting code...",200);
+        response = new Response("Waiting code...", Error.OK);
         response.setEmail(email);
 
         return response;
     }
 
-    public Response checkCode(@RequestParam Integer code){
-    return null;
+    @PostMapping("/checkcode")
+    public Response checkCode(@RequestParam Integer code,@RequestParam String emailString){
+        Response response = null;
+
+        if(code<100000 || code >999999){
+            return new Response("code unbelievable",Error.CODE_UNBELIEVABLE);
+        }else{
+            Email email = emailRepository.getEmailByEmail(emailString);
+            if(email == null){
+                return new Response("email unregistered",Error.EMAIL_UNREGISTERED);
+            }
+            else if(email.getCode() == 0){
+                return new Response("Code is null",Error.CODE_IS_NULL);
+            }else{
+
+                if(email.getCode() != code){
+                    return new Response("Code unbelievable",Error.CODE_UNBELIEVABLE);
+                }else{
+                    email.setCode(0);
+                    emailRepository.save(email);
+                    return new Response("OK",Error.OK);
+
+                }
+
+            }
+        }
+
+
     }
 
     @PostMapping("/reguser")
     public Response regUser(@Valid @RequestBody UserDTO userDTO){
         Response response = null;
 
-
+        Email email = emailRepository.getEmailByEmail(userDTO.email);
+        if(email == null){
+            return new Response("email unregistered",Error.EMAIL_UNREGISTERED);
+        }
 
 
         return response;
 
     }
+
 
 
 }

@@ -10,7 +10,7 @@ import ru.antonsibgatulin.tinder_backend.include.user.User;
 @Data
 @Getter
 @Setter
-public class UserDTO {
+public class UserDTO  {
     public String name;
     public String password;
 
@@ -23,6 +23,8 @@ public class UserDTO {
     public EUser EgenderToShow;
 
     public boolean showMe;
+
+    public String email;
 
     public UserDTO init(){
         Egender = EUser.valueOf(gender);
