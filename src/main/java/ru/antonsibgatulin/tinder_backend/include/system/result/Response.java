@@ -2,12 +2,16 @@ package ru.antonsibgatulin.tinder_backend.include.system.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.user.Profile;
 import ru.antonsibgatulin.tinder_backend.include.user.User;
 
-
+@Data
+@Getter
+@Setter
 @RequiredArgsConstructor
 public class Response {
 
@@ -47,43 +51,5 @@ public class Response {
         this.profile = profile;
     }
 
-    public String getText() {
-        return text;
-    }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 }

@@ -1,11 +1,9 @@
 package ru.antonsibgatulin.tinder_backend.controllers.reg;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.antonsibgatulin.tinder_backend.dto.EmailDTO;
+import ru.antonsibgatulin.tinder_backend.dto.UserDTO;
 import ru.antonsibgatulin.tinder_backend.dto.mapping.EmailMapping;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.email.repository.EmailRepository;
@@ -41,5 +39,21 @@ public class RegController {
 
         return response;
     }
+
+    public Response checkCode(@RequestParam Integer code){
+    return null;
+    }
+
+    @PostMapping("/reguser")
+    public Response regUser(@Valid @RequestBody UserDTO userDTO){
+        Response response = null;
+
+
+
+
+        return response;
+
+    }
+
 
 }

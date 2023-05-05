@@ -2,13 +2,20 @@ package ru.antonsibgatulin.tinder_backend.include.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.interests.Interest;
 import ru.antonsibgatulin.tinder_backend.include.target.Target;
 
 import java.util.List;
 
+@Data
+@Getter
+@Setter
 @Entity
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -22,20 +29,31 @@ public class User {
     private String password;
 
     private Long timeBirth;
-
-
     //private String gender;
     //private String genderToShow;
-
-
     private EUser gender;
     private EUser genderToShow;
 
-
     private boolean showMe;
 
+    @ManyToOne
+    @JoinColumn(name = "target_id")
+    private Target target;
 
-    private String email;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @ManyToMany
+    @JoinTable(name = "interest_id")
+    private List<Interest> interests;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+
+    private Integer ban;
+    private Integer deleted;
+
+
+
 
     public User(){
 
@@ -49,7 +67,7 @@ public class User {
         this.gender = gender;
         this.genderToShow = genderToShow;
         this.showMe = showMe;
-        this.email = email;
+
 
 
         this.profile = new Profile();
@@ -57,38 +75,13 @@ public class User {
         this.deleted = 0;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "target_id")
-    private Target target;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @ManyToMany
-    @JoinTable(name = "interest_id")
-    private List<Interest> interests;
-
-
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
-
-
-    private Integer ban;
-    private Integer deleted;
 
 
     public void predict(){
         password = null;
-        email = null;
+
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -136,53 +129,5 @@ public class User {
 
     public void setShowMe(boolean showMe) {
         this.showMe = showMe;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Target getTarget() {
-        return target;
-    }
-
-    public void setTarget(Target target) {
-        this.target = target;
-    }
-
-    public List<Interest> getInterests() {
-        return interests;
-    }
-
-    public void setInterests(List<Interest> interests) {
-        this.interests = interests;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public Integer getBan() {
-        return ban;
-    }
-
-    public void setBan(Integer ban) {
-        this.ban = ban;
-    }
-
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
     }
 }

@@ -2,12 +2,16 @@ package ru.antonsibgatulin.tinder_backend.include.email;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.user.User;
 
 import java.util.Random;
 
 @Entity
 @Data
+@Getter
+@Setter
 public class Email {
 
     @Id
@@ -33,13 +37,6 @@ public class Email {
         setCode(100000+new Random().nextInt(900000-1));
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -48,23 +45,6 @@ public class Email {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
 
     @Override
     public String toString() {
