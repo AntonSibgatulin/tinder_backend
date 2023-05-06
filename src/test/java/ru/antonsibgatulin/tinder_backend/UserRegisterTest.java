@@ -22,8 +22,7 @@ import ru.antonsibgatulin.tinder_backend.include.user.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-//@EnableAutoConfiguration(exclude= AutoConfigureTestDatabase.class)
-//@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+
 public class UserRegisterTest {
 
 
@@ -37,15 +36,6 @@ public class UserRegisterTest {
     private TokenUserRepository tokenUserRepository;
     @Autowired
     private ImageRepository imageRepository;
-
-/*
-    public UserRegisterTest(UserRepository userRepository, EmailRepository emailRepository, ProfileRepository profileRepository) {
-        this.userRepository = userRepository;
-        this.emailRepository = emailRepository;
-        this.profileRepository = profileRepository;
-    }
-
- */
 
 
     @Test

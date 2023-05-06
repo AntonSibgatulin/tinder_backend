@@ -44,7 +44,7 @@ public class RegController {
 
         emailRepository.save(email);
 
-        Response response = new Response("Waiting code...", Error.OK);
+        Response response = new Response("OK", Error.OK);
         response.setEmail(email);
 
         return response;
@@ -103,7 +103,9 @@ public class RegController {
 
 
         }catch (Exception e){
-            return new Response("email unregistered", Error.TOKEN_INVALID);
+            return new Response("USER_AUTH_FALSE",Error.TOKEN_INVALID);
+
+
         }
 
 

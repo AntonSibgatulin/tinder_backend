@@ -25,16 +25,10 @@ import ru.antonsibgatulin.tinder_backend.dto.mapping.EmailMappingImpl;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.email.repository.EmailRepository;
 import ru.antonsibgatulin.tinder_backend.include.user.repository.UserRepository;
-/*
-@SpringBootTest
-@ActiveProfiles("test")
-@RunWith(SpringJUnit4ClassRunner.class)
-*/
+
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-//@EnableAutoConfiguration(exclude= AutoConfigureTestDatabase.class)
-//@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 public class EmailRegisterTest {
 
 
