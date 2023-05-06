@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.user.Profile;
+import ru.antonsibgatulin.tinder_backend.include.user.TokenUser;
 import ru.antonsibgatulin.tinder_backend.include.user.User;
 
 @Data
@@ -27,6 +28,11 @@ public class Response {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Profile profile;
+
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private TokenUser tokenUser;
+
 
     public Response(String text) {
         this.text = text;

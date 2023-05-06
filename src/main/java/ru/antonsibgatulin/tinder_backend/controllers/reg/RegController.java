@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.*;
 import ru.antonsibgatulin.tinder_backend.dto.EmailDTO;
 import ru.antonsibgatulin.tinder_backend.dto.UserDTO;
 import ru.antonsibgatulin.tinder_backend.dto.mapping.EmailMapping;
+import ru.antonsibgatulin.tinder_backend.dto.mapping.UserMapping;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
 import ru.antonsibgatulin.tinder_backend.include.email.repository.EmailRepository;
 import ru.antonsibgatulin.tinder_backend.include.error.Error;
 import ru.antonsibgatulin.tinder_backend.include.system.result.Response;
+import ru.antonsibgatulin.tinder_backend.include.user.TokenUser;
+import ru.antonsibgatulin.tinder_backend.include.user.User;
+import ru.antonsibgatulin.tinder_backend.include.user.repository.TokenUserRepository;
 import ru.antonsibgatulin.tinder_backend.include.user.repository.UserRepository;
 
 @RestController
@@ -18,24 +22,29 @@ public class RegController {
 
     private final UserRepository userRepository;
     private final EmailRepository emailRepository;
-    private final EmailMapping emailMapping;
+    private final TokenUserRepository tokenUserRepository;
 
-    public RegController(UserRepository userRepository, EmailRepository emailRepository, EmailMapping emailMapping) {
+    private final EmailMapping emailMapping;
+    private final UserMapping userMapping;
+
+    public RegController(UserRepository userRepository, EmailRepository emailRepository, EmailMapping emailMapping, TokenUserRepository tokenUserRepository, UserMapping userMapping) {
         this.userRepository = userRepository;
         this.emailRepository = emailRepository;
         this.emailMapping = emailMapping;
+        this.tokenUserRepository = tokenUserRepository;
+        this.userMapping = userMapping;
     }
 
 
     @PostMapping("/register")
     public Response reg(@Valid @RequestBody EmailDTO emailDTO){
-        Response response = null;
 
         Email email = emailMapping.toNumberFromNumberDTO(emailDTO);
         email.generateRandomCode();
 
         emailRepository.save(email);
-        response = new Response("Waiting code...", Error.OK);
+
+        Response response = new Response("Waiting code...", Error.OK);
         response.setEmail(email);
 
         return response;
@@ -43,7 +52,7 @@ public class RegController {
 
     @PostMapping("/checkcode")
     public Response checkCode(@RequestParam Integer code,@RequestParam String emailString){
-        Response response = null;
+
 
         if(code<100000 || code >999999){
             return new Response("code unbelievable",Error.CODE_UNBELIEVABLE);
@@ -61,7 +70,11 @@ public class RegController {
                 }else{
                     email.setCode(0);
                     emailRepository.save(email);
-                    return new Response("OK",Error.OK);
+                    TokenUser tokenUser = new TokenUser(email);
+                    tokenUserRepository.save(tokenUser);
+                    Response response = new Response("OK",Error.OK);
+                    response.setTokenUser(tokenUser);
+                    return response;
 
                 }
 
@@ -73,15 +86,27 @@ public class RegController {
 
     @PostMapping("/reguser")
     public Response regUser(@Valid @RequestBody UserDTO userDTO){
-        Response response = null;
 
-        Email email = emailRepository.getEmailByEmail(userDTO.email);
-        if(email == null){
-            return new Response("email unregistered",Error.EMAIL_UNREGISTERED);
+        if(userDTO.checkError()){
+            return new Response("Invalid request",Error.INVALID_REQUEST);
         }
 
 
-        return response;
+        try {
+            Email email = tokenUserRepository.getTokenUserByCode(userDTO.token).getEmail();
+            User user = userMapping.fromUserDTOtoUser(userDTO);
+            user.setBan(1);
+            userRepository.save(user);
+            email.setUser(user);
+            emailRepository.save(email);
+            return new Response("OK",Error.OK);
+
+
+        }catch (Exception e){
+            return new Response("email unregistered", Error.TOKEN_INVALID);
+        }
+
+
 
     }
 

@@ -1,5 +1,6 @@
 package ru.antonsibgatulin.tinder_backend.dto;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,7 @@ import ru.antonsibgatulin.tinder_backend.include.user.User;
 @Data
 @Getter
 @Setter
-public class UserDTO  {
+public class UserDTO extends DTO implements IDTO  {
     public String name;
     public String password;
 
@@ -22,14 +23,37 @@ public class UserDTO  {
     public EUser Egender;
     public EUser EgenderToShow;
 
-    public boolean showMe;
+    public Boolean showMe;
 
-    public String email;
 
     public UserDTO init(){
         Egender = EUser.valueOf(gender);
         EgenderToShow = EUser.valueOf(genderToShow);
 
         return this;
+    }
+
+
+    @Override
+    public boolean checkError(){
+
+        init();
+
+        if(super.checkError())return true;
+
+        if(name.length()>30){
+            return true;
+        }
+        else if(password.length()>32){
+            return true;
+        }else if(System.currentTimeMillis()-timeBirth<1000*60*60*24*365*18){
+            return true;
+        }else if(Egender == null || EgenderToShow == null){
+            return true;
+        }else if(showMe==null){
+            return true;
+        }
+
+        return false;
     }
 }
