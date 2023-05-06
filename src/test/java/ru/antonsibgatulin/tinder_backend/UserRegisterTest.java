@@ -14,7 +14,10 @@ import ru.antonsibgatulin.tinder_backend.include.user.Profile;
 import ru.antonsibgatulin.tinder_backend.include.user.User;
 import ru.antonsibgatulin.tinder_backend.include.user.desc.food.Food;
 import ru.antonsibgatulin.tinder_backend.include.user.desc.socialnetwork.SocialNetwork;
+import ru.antonsibgatulin.tinder_backend.include.user.image.Image;
+import ru.antonsibgatulin.tinder_backend.include.user.repository.ImageRepository;
 import ru.antonsibgatulin.tinder_backend.include.user.repository.ProfileRepository;
+import ru.antonsibgatulin.tinder_backend.include.user.repository.TokenUserRepository;
 import ru.antonsibgatulin.tinder_backend.include.user.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
@@ -30,6 +33,11 @@ public class UserRegisterTest {
     private  EmailRepository emailRepository;
     @Autowired
     private  ProfileRepository profileRepository;
+    @Autowired
+    private TokenUserRepository tokenUserRepository;
+    @Autowired
+    private ImageRepository imageRepository;
+
 /*
     public UserRegisterTest(UserRepository userRepository, EmailRepository emailRepository, ProfileRepository profileRepository) {
         this.userRepository = userRepository;
@@ -59,4 +67,16 @@ public class UserRegisterTest {
         saveProfile.setFood(Food.EAT_ALL);
         assert saveProfile.getId()!=null;
     }
+
+    @Test
+    public void saveImage(){
+        Image image = new Image("url",1L,System.currentTimeMillis(),0);
+        imageRepository.save(image);
+        assert image.getId()!=null;
+    }
+
+
+
+
+
 }

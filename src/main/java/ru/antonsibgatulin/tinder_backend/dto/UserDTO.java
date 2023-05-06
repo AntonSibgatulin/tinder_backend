@@ -1,11 +1,11 @@
 package ru.antonsibgatulin.tinder_backend.dto;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.user.EUser;
-import ru.antonsibgatulin.tinder_backend.include.user.User;
+
 
 
 @Data

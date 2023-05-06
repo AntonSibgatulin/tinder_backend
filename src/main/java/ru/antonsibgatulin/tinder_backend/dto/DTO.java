@@ -2,10 +2,12 @@ package ru.antonsibgatulin.tinder_backend.dto;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 
 public abstract class DTO  {
+    @NonNull
     public String token;
 
 

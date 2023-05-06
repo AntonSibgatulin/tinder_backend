@@ -1,6 +1,8 @@
 package ru.antonsibgatulin.tinder_backend.include.files;
 
-public class FileUploadResponse {
+import ru.antonsibgatulin.tinder_backend.dto.DTO;
+
+public class FileUploadResponse extends DTO {
     private String fileName;
     private String downloadUri;
     private long size;

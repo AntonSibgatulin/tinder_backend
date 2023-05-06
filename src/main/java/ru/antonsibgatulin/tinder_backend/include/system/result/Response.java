@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.email.Email;
+import ru.antonsibgatulin.tinder_backend.include.files.FileUploadResponse;
 import ru.antonsibgatulin.tinder_backend.include.user.Profile;
 import ru.antonsibgatulin.tinder_backend.include.user.TokenUser;
 import ru.antonsibgatulin.tinder_backend.include.user.User;
@@ -33,6 +34,9 @@ public class Response {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private TokenUser tokenUser;
 
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private FileUploadResponse fileUploadResponse;
 
     public Response(String text) {
         this.text = text;

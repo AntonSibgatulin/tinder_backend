@@ -21,11 +21,18 @@ public class Image {
     private Long id;
 
     private String url;
-    private Long user_id;
+    private Long userId;
     private Long timeLoad;
     private Integer deleted;
 
     public Image() {
 
+    }
+
+    public Image(String url, Long user_id, Long timeLoad, Integer deleted) {
+        this.url = url;
+        this.userId = user_id;
+        this.timeLoad = timeLoad;
+        this.deleted = deleted;
     }
 }

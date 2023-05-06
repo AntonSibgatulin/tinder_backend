@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.antonsibgatulin.tinder_backend.include.interests.Interest;
 import ru.antonsibgatulin.tinder_backend.include.target.Target;
+import ru.antonsibgatulin.tinder_backend.include.user.image.Image;
 
 import java.util.List;
 
@@ -36,9 +37,14 @@ public class User {
 
     private boolean showMe;
 
+    @ManyToMany
+    @JoinTable(name = "image_id")
+    private List<Image> images;
+
     @ManyToOne
     @JoinColumn(name = "target_id")
     private Target target;
+
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @ManyToMany
